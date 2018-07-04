@@ -1,0 +1,154 @@
+body {
+    margin: 0px;
+	background-color: #000;
+}
+.slider {
+	width: 90%;
+	padding: 5% 5% 2% 5%;
+}
+.slider-wrapper {
+	width: 100%;
+	height: 400px;
+	position: relative;
+}
+.slide {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	transition: opacity 1s linear;
+}
+
+.slider-wrapper > .slide:first-child {
+	opacity: 1;
+}
+
+.mail {
+	color: #fda100; float: right; margin-right: 5%; font-size: 18px; font-weight: bolder;
+}
+.avatar {
+	width: 200px;
+	height: 200px;
+	background-color: #fda100;
+}
+.avatar p {
+	color: #000;
+	font-weight: bolder;
+	display: block;
+}
+.profile {
+	z-index: 999;
+	color: #fda100;
+	width: 200px;
+	margin: 20px 0px;
+	position: relative;
+	text-align: center;
+	font-weight: bolder;
+}
+.msg {color: red; background-color:#fff; padding: 5px; border-radius: 5px; text-align: center; -webkit-transition: 		width 2s; transition: width 2s;}
+nav {
+	float: right;
+	z-index: 90;
+	width: 100%;
+	padding: 10px 5%;
+	background-color: #fda100;
+	text-align: right;
+	position: relative;
+}
+nav a {
+	padding-left: 10px;
+	color: #000;
+	text-decoration: none;
+	font-size: 18px;
+	font-weight: bolder;
+}
+nav a:hover {
+	padding-left: 10px;
+	color: #fff;
+	text-decoration: none;
+	font-size: 18px;
+	font-weight: bolder;
+}
+header {
+	padding-top: 10px;
+	width: 100%;
+	height: auto;
+}
+header h3{
+	float: right;
+	padding: 0px 5%;
+}
+.carousel {
+	height: 250px;
+	width: 80%;
+	color: #fda100;
+	position: relative;
+}
+.content {
+	height: auto;
+	color: #fda100;
+	padding: 0px 5% 100px 5%;
+}
+.content h2 {
+	font-weight: bolder;
+}
+.container {
+	position: relative;
+	margin-top: 120px;
+	background: url("../img/backgroundimg2.jpg") no-repeat center;
+	background-size: cover;
+	opacity: .90;
+	width: 100%;
+	height: auto;
+}
+
+.login {
+	color: #000;
+	font-weight: bolder;
+	padding: 100px 490px 40px 550px;
+	border-color: #fda100;
+}
+.login input[type=text], input[type=email], input[type=tel], input[type=password] {
+	background-color: #281A00;
+	border: none;
+	width: 250px;
+	color: aliceblue;
+	font-weight: bolder;
+	cursor: white;
+	margin-top: 5px;
+	padding: 10px 20px;
+}
+.login input[type=submit]{
+	padding: 10px 20px;
+	border: none;
+	width: 100px;
+	color: #fff;
+	font-weight: bolder;
+	background-color: black;
+	margin-top: 5px;
+}
+.logo {
+	width: 100px;
+	height: 70px;
+	float: left;
+	margin-left: 10%;
+}
+footer {
+	background-color: #fda100;
+	height: 140px;
+	font-weight: bolder;
+	padding: 40px 5% 0px 5%;
+	margin: 0px;
+}
+footer .address {
+	float: right;
+	font-weight: bolder;
+	display: inline;
+	width: auto;
+}
+footer .social {
+	float: left;
+	font-weight: bolder;
+	display: inline;
+	width: auto;
+}
