@@ -1,0 +1,70 @@
+.slider {
+				width: 90%;
+				padding: 5% 5% 2% 5%;
+			}
+			.sell {
+				border: 1px solid #000;
+				border-radius: 3px;
+				height: 150px;
+			}
+			.slider-wrapper {
+				width: 100%;
+				height: 400px;
+				position: relative;
+			}
+
+			.slide {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				opacity: 0;
+				transition: opacity 1s linear;
+			}
+				
+			footer p {
+				color: black;
+			}
+
+			.portfolio {
+				height: 250px; width: 250px; border-radius: 0px 0px 0px 0px; box-shadow: 3px 3px 0px 0px rgb(0, 2, 3, 0); 
+
+			}
+
+			.portfolio img {
+				height: 250px; width: 250px; border-radius: 0px 0px 50px 0px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); text-align: center;
+			}
+
+			
+			.logo {
+				
+				width: 100px;
+				height: 100px;
+
+			}
+			.mail {
+	
+				margin-right: 5%;
+				color: #fda100;
+				text-align: right;
+				padding-top: 20px;
+
+			}
+			footer {
+				background-color: #fda100;
+				height: 200px;
+				
+				padding: 40px 5% 0px 5%;
+				margin: 0px;
+			}
+			footer .address {
+				float: right;
+				font-weight: bold;
+				display: inline;
+				
+			}
+			footer .social {
+				float: left;
+				font-weight: bold;
+				display: inline;
+				
+			}
