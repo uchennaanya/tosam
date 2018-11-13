@@ -13,30 +13,36 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 	$password = htmlspecialchars($_POST['password']);
 	$repass = $_POST['repass'];
 	
-	if (empty($username) || !preg_match("/^[a-zA-Z]*$/", $username)) {
-		$errusername = "First name required!";
-	} else if (empty($mail) || !filter_var($mail, FILTER_VALIDATE_EMAIL)) {
-		$errmail = "A valid mail required!";
-	} else if (empty($phone) || !preg_match("/^[0-9-+]*$/", $phone)) {
-		$errphone = "Phone number required!";
-	} else if (empty($password) || !preg_match("/^['a-zA-Z0-9']*$/", $password)) {
-		$errpass = "Password required!";
-	} else if (empty($repass)) {
-		$errrepass = "Confirm password!";
-	}
 	$hashedpassword = password_hash($password, PASSWORD_DEFAULT);
-		
-	if ($password == $repass) {
 	
-	$sql = $conn->prepare("INSERT INTO ugctable(username, mail, phone, password)VALUES(?, ?, ?, ?)");
-		$sql->bind_param('ssss', $username, $mail, $phone, $hashedpassword);
-		$sql->execute();
+	if (empty($username) || !preg_match("/^[a-zA-Z]*$/", $username)) {
+		$errusername = "First name required !";
+	} else if (empty($mail) || !filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+		$errmail = "A valid mail required !";
+	} else if (empty($phone) || !preg_match("/^[0-9-+]*$/", $phone)) {
+		$errphone = "Phone number required !";
+	} else if (empty($password) || !preg_match("/^['a-zA-Z0-9']*$/", $password)) {
+		$errpass = "Password required !";
+	} else if (empty($repass)) {
 		
+		$errrepass = "Confirm password!";
 	} else {
-		$pass_er =  "<p class='msg' >" ."password mismatch try again" . "</p>";
+		
+		if ($password == $repass) {
+
+		$sql = $conn->prepare("INSERT INTO ugctable(username, mail, phone, password)VALUES(?, ?, ?, ?)");
+
+			$sql->bind_param('ssss', $username, $mail, $phone, $hashedpassword);
+
+			$sql->execute();
+
+			header("location:login.php");
+
+		} else {
+			
+			$pass_er =  "<p class='msg' >" ."password mismatch try again" . "</p>";
+		}	
 	}
-	
-	header("location:login.php");
 }
 
 ?>
@@ -44,43 +50,65 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 <!doctype html>
 <html lang="en">
 	<head>
-		<title> UGC || HomePage </title>
+		<title> UGC || SignPage </title>
 		<meta charset="utf-8">
-		<link rel="stylesheet" href="assets/css/style.css" media="all">
+		<link rel="stylesheet" href="assets/css/bootstrap.css">
+		<link rel="stylesheet" href="assets/css/styl.css" media="all">
 		<link rel="stylesheet" href="assets/css/font-awesome.css">
 	</head>
-	<body>
-			<h3 class="mail">Contact@yahoo.com</h3>
-		
+	<body>		
+		<div class="mail">Contact@yahoo.com</div>
 		<header>
+			<a href="index.php"> <img src="assets/img/UGC%20Concept%20Logo.jpg" class="logo"> </a>
 			<nav>
-				<a href="index.php"><img src="assets/img/UGC%20Concept%20Logo.jpg" class="logo"></a>
+				<a href="login.php"> LOGIN </a> 
+<!--				<a href="signup.php"> REGISTER </a>-->
 			</nav>
 		</header>
-		<div class="container">
-		<div class="login" style="position: relative;">
-			<div style="padding: 40px 5px; background-color: #fda100;">
-				<?php echo  $pass_er; ?>
-			<form method="post">
-				USERNAME:<br />
-				<input type="text" accesskey="0" required name="username" value="<?php echo $username; ?>"> <br />
-				<?php echo $errusername; ?> <br />
-				EMAIL:<br />
-				<input type="email" required name="mail" value="<?php echo $mail; ?>"> <br />
-				<?php echo $errmail; ?> <br />
-				PHONE:<br />
-				<input type="tel" required name="phone" value="<?php echo $phone ?>"> <br />
-				<?php echo $errphone; ?> <br />
-				PASSWORD:<br />
-				<input type="password" required name="password" value="<?php echo $password ?>"> <br />
-				<?php echo $errpassword; ?> <br />
-				RETYPE-PASSWORD:<br />
-				<input type="password" required name="repass"><br />
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-4"></div>
 				
-				<input type="submit" value="SIGNUP" name="submit">
-			</form>
-			</div>
-			</div>
+				<div class="col-md-4">
+				
+					<h3> Sign Up</h3>
+					<?php echo  $pass_er; ?>
+					<form method="post">
+						<div class="form-group">
+							<label for="username">Username</label>
+							<input type="text" name="username" class="form-control">
+							<?php echo $errusername; ?>
+						</div>
+						<div class="form-group">
+							<label for="phone">Phone</label>
+							<input type="text" name="phone" class="form-control">
+							<?php echo $errphone; ?>
+						</div>
+						<div class="form-group">
+							<label for="email">Email</label>
+							<input type="email" name="mail" class="form-control">
+							<?php echo $errmail; ?>
+						</div>
+						<div class="form-group">
+							<label for="password">Password</label>
+							<input type="password" name="password" class="form-control">
+							<?php echo $pass_er; ?>
+						</div>
+						<div class="form-group">
+							<label for="retype">Retype password</label>
+							<input type="password" name="repass" class = "form-control">
+							<?php echo $errrepass; ?>
+						</div>
+						<div class="form-group">
+							
+							<input type="submit" name="submit" value="Signup" class="btn btn-success">
+							
+						</div>
+						
+					</form>
+				</div>
+			</div>		
+			
 		</div>
 		<footer>
 			<div class="social">

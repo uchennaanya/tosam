@@ -1,8 +1,11 @@
 <?php  
 
 session_start();
-if (!isset($_SESSION["username"])) {
-    header("location:index.php");
+
+if (ISSET($_SESSION["username"])) {
+	
+    header("location:profile.php");
+	
 }
 
 ?>
